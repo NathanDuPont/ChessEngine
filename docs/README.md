@@ -41,7 +41,7 @@ Once inside of the `docs` directory, the documentation site can be built with th
 ./make.bat html
 ```
 
-From here, the website can be loaded by opening the `index.html` page in a web browser, which is located within the `docs/build/html` directory
+From here, the website can be loaded by opening the `index.html` page in a web browser, which is located within the `docs/build/html` directory.
 
 ## Contributing Guidelines
 
