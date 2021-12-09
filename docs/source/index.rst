@@ -1,20 +1,15 @@
-.. ChessEngine documentation master file, created by
-   sphinx-quickstart on Wed Dec  8 13:24:21 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. This file is the landing page for the documentation. It will link out to the associated pages and give basic information about the event
 
-Welcome to ChessEngine's documentation!
-=======================================
+ChessEngine Documentation
+=========================
+
+This website holds all of the information about the ChessEngine repository, and how you can use the code base to create a basic agent to play chess.
+
+If you are new to the repository, read through the :ref:`Getting Started` guide to learn more about the repository, as well as how to create your own agent.
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :hidden:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   getting-started/getting-started
+   competition-overview/competition-overview
+   resources/resources

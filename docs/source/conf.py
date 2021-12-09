@@ -48,7 +48,7 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 # Set the favicon for the documentation
-html_favicon = 'docs/source/icons/favicon.ico'
+html_favicon = 'icons/favicon.ico'
 
 # -- Options for HTML output -------------------------------------------------
 
