@@ -11,8 +11,6 @@ To get this functioning locally, there are a few prerequisitves that you will ne
 
 - Git
 - Python (3.x.x)
-- Pip
-- SSH configured with your GitHub account
 
 Once these are met, installation of the repository can continue.
 
