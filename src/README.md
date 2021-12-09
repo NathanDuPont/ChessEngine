@@ -49,3 +49,11 @@ class TODOAgent(BaseAgent):
 ```
 
 Your code will go into the `heuristic()` function within the class. In this case, you use the data available to you through the `board` parameter, and use it to return an integer reward. In this case, large positive integers indicate that the model is doing well, large negative integers indicate that the model is doing poorly. More information about the chess board can be found at https://python-chess.readthedocs.io/en/latest/core.html#board.
+
+Once you create your agent, go to the `main.py` file and add in your agent as either of the players. You can use these agents to test your model against a sample, against a friend's model, or test it against itself. To test the agent, make sure your prompt is in the `src/` directory and run the following command as outlined in the *Getting Started* section:
+
+```
+python main.py
+```
+
+Finally, after running a match, results will be available in the `src/output/` directory, located under a sub-directory following the form *{White Agent}_{Black Agent}_{Unique ID}*. Within here, you can view pictures from the match, as well as a video of the entire match being played out.
