@@ -20,7 +20,7 @@ python main.py
 
 ## Creating Custom Agents
 
-Users can create their own agents within the `agents.py` file, located in the `src` directory. There are currently some samples in the file that can be used as reference or starting material. However, if you wish to create your own agent, you need to make sure to follow the below format:
+Users can create their own agents within the `agents.py` file, located in the `src` directory. There are currently some samples in this file, as well as the `example_agents.py` file that can be used as reference or starting material. However, if you wish to create your own agent, you need to make sure to follow the below format:
 
 ```python
 class TODOAgent(BaseAgent):
