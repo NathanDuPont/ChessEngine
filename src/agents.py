@@ -28,8 +28,8 @@ class CustomAgent(BaseAgent):
         will learn to optimize it's gameplay in order to make the score
         as positive or negative as possible, coordinating to it's color.
 
-        :param board:
-        :return: Returns the estimated utility of the board state.
+        :param board: board, Board element containing data about the current game state
+        :return: int, Returns the estimated utility of the board state.
         """
         # Evaluate scores of each piece
         value = sum(
