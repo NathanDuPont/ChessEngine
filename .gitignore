@@ -1,6 +1,9 @@
 # User defined includes
 docs/build/
 venv/
+temp/
+output/
+src/output/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
