@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chess AI Competition Overview &mdash; ChessEngine  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Resources" href="../resources/resources.html" />
+    <link rel="prev" title="Testing an Agent" href="../getting-started/testing-an-agent.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> ChessEngine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chess AI Competition Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preface">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-competition">The Competition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-join">How to Join</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-rules">The Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-prizes">The Prizes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/resources.html">Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ChessEngine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Chess AI Competition Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/competition-overview/competition-overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chess-ai-competition-overview">
+<h1>Chess AI Competition Overview<a class="headerlink" href="#chess-ai-competition-overview" title="Permalink to this headline"></a></h1>
+<p>The Chess AI competition is focused around building an <em>agent</em> that uses algorithms in order to play the game of Chess. In this case, we will be using algorithms in order to create a model that understands what moves lead to good outcomes while playing Chess, and incentivize the model to take these actions.</p>
+<section id="preface">
+<h2>Preface<a class="headerlink" href="#preface" title="Permalink to this headline"></a></h2>
+<p>The work with this project falls under the larger scope of projects within Reinforcement Learning. In Reinforcement Learning, an agent (computer playing the game) is <em>rewarded</em> for taking actions that are good for itself, and <em>penalized</em> for taking actions that are bad for itself.</p>
+<img alt="Basic model for reinforcement learning" src="../_images/rl-model.png" />
+<p>In this case, there are two primary areas that we can add code to create a Reinforcement Learning model. For us, we will specifically be focusing on the <strong>reward function</strong>, which defines what reward is returned to the agent, based on the actions it has taken in the environment.</p>
+</section>
+<section id="the-competition">
+<h2>The Competition<a class="headerlink" href="#the-competition" title="Permalink to this headline"></a></h2>
+<p>Your goal is to create a <strong>reward function</strong> based on the provided code, that gives an agent points for taking certain actions. With this in place, you can dictate the strategy of your Chess agent; if you give it more points for taking certain actions, it will take those actions. Combining this with known and proven Chess strategies, you can make an agent that can take down other AI models, and even other players.</p>
+<p><strong>Over the course of a week (12/9/2021 - 12/15/2021)</strong>, it is your task to design an agent that can play Chess as proficiently as possible. Once completed, you will submit the agent to the MSOE AI Club for a final competition, held during our W3 meeting on <strong>12/16/2021, from 6-7 PM in DH110</strong>.</p>
+</section>
+<section id="how-to-join">
+<h2>How to Join<a class="headerlink" href="#how-to-join" title="Permalink to this headline"></a></h2>
+<p>Anyone is welcome to, and encouraged to join this challenge. You <em>do not</em> need to be present at the challenge announcement meeting to participate.</p>
+<p>In order to join, please fill out the following form:</p>
+<p><a class="reference external" href="https://forms.office.com/Pages/ResponsePage.aspx?id=rM5GQNP9yUasgLfEpJurcIdJ5E0-M9ZFv56nqAPzJP5UNFRZS0lNTlA5MDhUNlNHUTA2UFdYRU5MWSQlQCN0PWcu">Chess AI Sign-up Form</a></p>
+</section>
+<section id="the-rules">
+<h2>The Rules<a class="headerlink" href="#the-rules" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Your agent must follow the interface provided, acting as a derived (child) class from the provided <strong>BaseAgent</strong> class.</dt><dd><ol class="loweralpha simple">
+<li><p>While you need to follow the interface, this <em>does not</em> prevent you from overriding the methods within the base class. For instance, if you wish to use a more complex Policy function than the provided Minimax function, you can override those methods in your derived implementation. Following this interface ensures we can properly compete with your agent.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>You must be able to run your agent using the provided <em>Engine</em> class, without changes. This is to ensure we can properly compete with your agent.</p></li>
+<li><p>You may consult any online resources, or use any online code as long as it is cited properly.</p></li>
+<li><p>A maximum of two people per team are allowed. You may work individually. Prizes will only be given to the members noted within the winning team’s submitted Agent class.</p></li>
+<li><p>Final submissions are due by <strong>11:59 PM on Wednesday, 12/15/2021</strong>. Late submissions are not allowed.</p></li>
+<li><p>The final competition will take place during the AI Club’s W3 meeting on <strong>12/16/2021, from 6-7 PM in DH110</strong>.</p></li>
+</ol>
+<p>The rules defined above are subject to change on any date throughout the competition. Annoncements of rule changes will be sent out on our <a class="reference external" href="https://join.slack.com/t/msoe-ai/shared_invite/zt-8urzlp0z-8Qiekpin4WyGzMKtZAJuaQ">Slack Team</a>. For questions or clarifications on the rules, please send a message in the <em>#competitions</em> channel on Slack.</p>
+</section>
+<section id="the-prizes">
+<h2>The Prizes<a class="headerlink" href="#the-prizes" title="Permalink to this headline"></a></h2>
+<p>One or both members on the winning team will win AI Club t-shirts, as well as 15 challenge tickets for the end of quarter raffle! These challenge tickets will put the winners up for first pick at prizes such as NVIDIA Jetsons, Raspberry Pis, gift cards, and/or other IoT/DIY kits at the end of the quarter.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../getting-started/testing-an-agent.html" class="btn btn-neutral float-left" title="Testing an Agent" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../resources/resources.html" class="btn btn-neutral float-right" title="Resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, MSOE AI Club.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

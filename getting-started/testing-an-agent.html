@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing an Agent &mdash; ChessEngine  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chess AI Competition Overview" href="../competition-overview/competition-overview.html" />
+    <link rel="prev" title="Creating an Agent" href="creating-an-agent.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> ChessEngine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="getting-started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repo-setup.html">Repository Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="creating-an-agent.html">Creating an Agent</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Testing an Agent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#viewing-model-results">Viewing Model Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../competition-overview/competition-overview.html">Chess AI Competition Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/resources.html">Resources</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ChessEngine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="getting-started.html">Getting Started</a> &raquo;</li>
+      <li>Testing an Agent</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting-started/testing-an-agent.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="testing-an-agent">
+<h1>Testing an Agent<a class="headerlink" href="#testing-an-agent" title="Permalink to this headline"></a></h1>
+<p>Once you get your agent completed, it’s time to test it. This will be done within the <cite>main.py</cite> file, located within the <cite>src/</cite> directory.</p>
+<p>The code within the <cite>main.py</cite> file follows the format below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">white_agent</span> <span class="o">=</span> <span class="n">CustomAgent</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">black_agent</span> <span class="o">=</span> <span class="n">CustomAgent</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">Engine</span><span class="p">(</span><span class="n">white_agent</span><span class="p">,</span> <span class="n">black_agent</span><span class="p">)</span>
+
+    <span class="n">engine</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In this case, one of the agents will be set to <cite>white_agent</cite>, and the other to <cite>black_agent</cite>. If you want to test your agent, replace one of the two to your Agent class, and run the file.</p>
+<p>For example, if your agent is called <cite>TODOAgent</cite>, your code will look like the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">white_agent</span> <span class="o">=</span> <span class="n">TODOAgent</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">black_agent</span> <span class="o">=</span> <span class="n">CustomAgent</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">Engine</span><span class="p">(</span><span class="n">white_agent</span><span class="p">,</span> <span class="n">black_agent</span><span class="p">)</span>
+
+    <span class="n">engine</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To test the code, you can open a terminal within the <cite>src/</cite> directory and run the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python main.py
+</pre></div>
+</div>
+<section id="viewing-model-results">
+<h2>Viewing Model Results<a class="headerlink" href="#viewing-model-results" title="Permalink to this headline"></a></h2>
+<p>Model results can be viewed within the <cite>src/output/</cite> directory, under a separate folder. The game information is saved under a new folder during every run, following the pattern <cite>{white_agent}_{black_agent}_{Unique ID}</cite>.</p>
+<p>There will be a video of the full game saved to the folder, along with images of the game board after each step.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="creating-an-agent.html" class="btn btn-neutral float-left" title="Creating an Agent" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../competition-overview/competition-overview.html" class="btn btn-neutral float-right" title="Chess AI Competition Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, MSOE AI Club.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
