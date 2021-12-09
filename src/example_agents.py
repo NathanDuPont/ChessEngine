@@ -11,6 +11,7 @@ which should make it more intellegent. However, there is deffinately room for im
 Also, feel free to copy the tables as they should already be reletively optimized
 """
 from extras.position_tables import tables
+
 class AgentWithPosHeuristic(BaseAgent):
     """
     Your agent class. Upon final submission, please rename this class to {Team Name}Agent.py, and
@@ -20,6 +21,72 @@ class AgentWithPosHeuristic(BaseAgent):
     Team Member 1:
     Team Member 2:
     """
+
+    pawn_table = [
+        0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+        5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,
+        1.0,1.0,2.0,3.0,3.0,2.0,1.0,1.0,
+        0.5,0.5,1.0,2.5,2.5,1.0,0.5,0.5,
+        0.0,0.0,0.0,2.0,2.0,0.0,0.0,0.0,
+        0.5,-0.5,-1.0,0.0,0.0,-1.0,-0.5,0.5,
+        0.5,1.0,1.0,-2.0,-2.0,1.0,1.0,0.5,
+        0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+    ]
+
+    knight_table = [
+        -5.0, -4.0, -3.0, -3.0, -3.0, -3.0, 4.0, -5.0,
+        -4.0, -2.0, 0.0, 0.0, 0.0, 0.0, -2.0, -4.0,
+        -3.0, 0.0, 1.0, 1.5, 1.5, 1.0, 0.0, -3.0,       
+        -3.0, 0.5, 1.5, 2.0, 2.0, 1.5, 0.5, -3.0,
+        -3.0, 0.0, 1.5, 2.0, 2.0, 1.5, 0.0, -3.0,
+        -3.0, 0.5, 1.0, 1.5, 1.5, 1.0, 0.5, -3.0,
+        -4.0, -2.0, 0.0, 0.5, 0.5, 0.0, -2.0, -4.0,
+        -5.0, -4.0, -3.0, -3.0, -3.0, -3.0, -4.0, -5.0
+    ]
+
+    bishop_table = [
+        -2.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -2.0,
+        -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0,
+        -1.0, 0.0, 0.5, 1.0, 1.0, 0.5, 0.0, -1.0,
+        -1.0, 0.5, 0.5, 1.0, 1.0, 0.5, 0.5, -1.0,
+        -1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, -1.0,
+        -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0,
+        -1.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.5, -1.0,
+        -2.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -2.0
+    ]
+
+    rook_table = [
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+        0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5,
+        -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5,
+        -0.5, 0.0, 0.0 , 0.0, 0.0, 0.0 , 0.0, -0.5,
+        -0.5, 2.0, 0.0 , 0.0, 0.0 , 2.0 , 0.0 , -0.5,
+        -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5,
+        -0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5,
+        0.0, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0, 0.0
+    ]
+
+    queen_table = [
+        -2.0, -1.0, -1.0, -0.5, -0.5, -1.0, -1.0, -2.0,
+        -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0,
+        -1.0, 0.0, 0.5, 0.5, 0.5, 0.5, 0.0, -1.0,
+        -0.5, 0.0, 0.5, 0.5, 0.5, 0.5, 0.0, -0.5,
+        0.0, 0.0, 0.5, 0.5, 0.5, 0.5, 0.0, -0.5,
+        -1.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.0, -1.0,
+        -1.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, -1.0,
+        -2.0, -1.0, -1.0, -0.5, -0.5, -1.0, -1.0, -2.0
+    ]
+
+    king_table = [
+        -3.0, -4.0, 4.0, -5.0, -5.0, -4.0, -4.0, -3.0,
+        -3.0, -4.0, -4.0, -5.0, -5.0, -4.0, -4.0, -3.0,
+        -3.0, -4.0, -4.0, -5.0, -5.0, -4.0, -4.0, -3.0,
+        -3.0, -4.0, 4.0, -5.0, -5.0, -4.0, 4.0, -3.0,
+        -2.0, -3.0, -3.0, -4.0, -4.0, -3.0, -3.0, -2.0,
+        -1.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -1.0,
+        2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 2.0, 2.0,
+        2.0, 3.0, 1.0, 0.0, 0.0, 1.0, 3.0, 2.0
+    ]
 
     def __init__(self, is_white):
         super().__init__(is_white)
@@ -49,22 +116,22 @@ class AgentWithPosHeuristic(BaseAgent):
 
             if lower == 'p':
                 score += 10
-                score += tables.pawn_table[position * index_direction] * table_effect
+                score += self.pawn_table[position * index_direction] * table_effect
             elif lower == 'n':
                 score += 30
-                score += tables.knight_table[position * index_direction] * table_effect
+                score += self.knight_table[position * index_direction] * table_effect
             elif lower == 'b':
                 score += 30
-                score += tables.bishop_table[position * index_direction] * table_effect
+                score += self.bishop_table[position * index_direction] * table_effect
             elif lower == 'r':
                 score += 50
-                score += tables.rook_table[position * index_direction] * table_effect
+                score += self.rook_table[position * index_direction] * table_effect
             elif lower == 'q':
                 score += 90
-                score += tables.queen_table[position * index_direction] * table_effect
+                score += self.queen_table[position * index_direction] * table_effect
             elif lower == 'k':
                 score += 900
-                score += tables.king_table[position * index_direction] * table_effect
+                score += self.king_table[position * index_direction] * table_effect
             
             score *= 1 if is_white else -1
 
