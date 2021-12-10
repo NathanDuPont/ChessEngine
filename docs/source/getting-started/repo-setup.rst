@@ -35,7 +35,7 @@ Open up Git Bash in the folder you wish to start your project in. From there, ru
 
 .. code:: bash
 
-    https://github.com/NathanDuPont/ChessEngine.git
+    git clone https://github.com/NathanDuPont/ChessEngine.git
 
 
 Installing Required Packages
