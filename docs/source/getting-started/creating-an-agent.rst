@@ -33,9 +33,7 @@ As mentioned above, we require everyone to follow the `BaseAgent` interface. How
 
 For your agent, we recommend starting with one of the examples, or following the template outlined below:
 
-.. code:: python
-
-    An example implementation you can use is shown below:
+An example implementation you can use is shown below:
 
 .. code:: python
 
