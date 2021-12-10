@@ -12,6 +12,6 @@ class Animator:
     def animate(self, queue):
         img_paths = []
         while not queue.empty():
-            img_paths.append(Image.open(queue.get()[1]))
+            img_path = queue.get()[1]
 
         # Combine img_paths into a video
