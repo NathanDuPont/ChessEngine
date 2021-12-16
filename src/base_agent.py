@@ -44,7 +44,7 @@ class BaseAgent:
         :param board: The chess board
         :return: The selected move
         """
-        global_score = -1e8 if self.is_white else 1e8
+        global_score = -float("inf") if self.is_white else float("inf")
         chosen_move = None
 
         for move in board.legal_moves:
@@ -67,7 +67,7 @@ class BaseAgent:
 
             board.pop()
 
-        return chosen_move
+        return chosen_move if chosen_move is not None else next(board.legal_moves)
 
     def minimax(self, board, depth, is_maxing_white, alpha, beta):
         """
