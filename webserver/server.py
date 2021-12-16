@@ -11,8 +11,13 @@ import time
 
 import sys
 
+import chess
+from chess.svg import board
+
 # from chess import engine
 sys.path.insert(1, '../src')
+from util import get_piece_utility
+
 from agents import CustomAgent
 from base_agent import BaseAgent
 from player_agent import PlayerAgent
@@ -97,6 +102,7 @@ class MyServer(BaseHTTPRequestHandler):
             self.send_response(404)
     
     def do_POST(self):
+        global engine
 
         def getBotChoice(choice, isWhite):
             if choice == "CustomAgent":
@@ -116,7 +122,7 @@ class MyServer(BaseHTTPRequestHandler):
             player_black = getBotChoice(black_choice, False)
 
             #this is not ideal
-            global engine 
+            global engine
             global img_location
 
             engine = WebEngine(player_white, player_black)
@@ -183,7 +189,6 @@ class MyServer(BaseHTTPRequestHandler):
             data = self.rfile.read(content_lenght).decode('ASCII')
             piece = data[len('piecePos='):]
             print(piece)
-            global engine
             legalMoves = None
             if piece[:1] == 'b':
                 legalMoves = player_black.get_legal_moves(engine.board)
@@ -191,8 +196,26 @@ class MyServer(BaseHTTPRequestHandler):
                 legalMoves = player_white.get_legal_moves(engine.board)
             print(legalMoves)
             legalPieceMoves = [move for move in legalMoves if move[:2] == piece[1:]]
+            print(legalPieceMoves)
 
             sendStringContent(None, "{legalmoves:" + str(legalPieceMoves) + "}")
+        
+        elif(request =='/boardScore'):
+            def getScore(board):
+                value = sum(
+                get_piece_utility(board.piece_at(square))
+                if board.piece_at(square) is not None
+                else 0
+                for square in chess.SQUARES)
+                return value
+            
+            #return score
+            score = getScore(engine.board)
+            print(engine.board)
+            print("board score is " + str(score))
+            sendStringContent(None, "{boardScore:" + str(score) + "}")
+
+            
 
 if __name__ == "__main__":        
     webServer = HTTPServer((hostName, serverPort), MyServer)

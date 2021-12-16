@@ -10,6 +10,12 @@ function isWhiteMove(){
     return (currentImg % 2 === 1)
 }
 
+function switchTurnMarkers(isWhite){
+    let white = document.getElementById('whitePlayerMove')
+    white.style.visibility = ''
+    let black = document.getElementById('blackPlayerMove')
+}
+
 //if white, y coord needs to be reversed
 function translateYCoord(y, isWhite){
     // if (isWhite){
@@ -69,8 +75,14 @@ function clearTable(){
     $('.highlight').remove() //removes any highlight
 }
 
+function updateGameScore(score){
+    document.getElementById('boardScore').innerHTML = score.substring(("boardScore:").length + 1, score.length - 1)
+}
+
 function checkNextMove(){
     clearTable()
+    getBoardScore()
+    switchTurnMarkers(isWhiteMove())
 
     if (isWhiteMove() && whitePlayer === 'bot'){
         //white player is a bot, request next image imediately
@@ -92,8 +104,6 @@ function checkNextMove(){
             //check if the user did not click on the margin
             if(!((x_selection < 0 || x_selection > 7) || (y_selection < 0 || y_selection > 7))){
                 legalMoves = requestLegalMoves(convertCoordsToMove(x_selection, y_selection, isWhiteMove()), $(this), x_selection, y_selection, isWhiteMove())  
-            } else {
-                alert('out of bonds')
             }
         })
     }
@@ -109,13 +119,11 @@ function requestLegalMoves(piece, client, x, y, isWhite){
             piecePos: (player + piece)
         },
         success: function(msg) { //triggers when response message of 200 is sent
-            legalMoves = msg.replace(' ', '').substring(("{legalmoves:[").length, msg.length - 2).split(',')
+            legalMoves = msg.replaceAll(' ', '').substring(("{legalmoves:[").length, msg.length - 3).split(',')
             if (legalMoves[0] === ''){ // no moves could be found
-                alert('no moves ' + isWhite)
             } else {
                 createHighlight(client, x, y, blueHighlight, false, null) //this is where the piece is
-                
-                legalMoves.forEach((move, index) => {
+                legalMoves.forEach((move) => {
                     boardPos = getBordPos(move, isWhite)
                     //these are the possible moves
                     playerSymbol = isWhite ? 'w' : 'b';
@@ -137,7 +145,6 @@ function requestNextImg(){
     // wait until the chess table has loaded
     $('#chessTable').promise().done(function () {
         currentImg++
-        $('#turn').text(isWhiteMove() ? 'white move' : 'black move')
     
         checkNextMove()
     })
@@ -171,7 +178,7 @@ function getBoardScore(){
         url: "boardScore",
         method: "POST",
         success: function(response) {
-            alert(response)
+            updateGameScore(response)
         }
     })
 }
@@ -200,7 +207,6 @@ $(document).ready(function() {
                 players: player1[0] + " " + player2[0]
             },
             success: function(msg) { //triggers when response message of 200 is sent
-                alert("game starting")
 
                 whitePlayer = player1[1]
                 blackPlayer = player2[1]
