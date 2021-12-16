@@ -124,10 +124,10 @@ class MyServer(BaseHTTPRequestHandler):
             print('game_started')
             print(img_location)
 
-        def makeMove():
-            player = engine.get_player(True)
-            player.set_next_move('b1a3')
-            print('player moving to b1a3')
+        def makeMove(next_move):
+            isWhite = True if next_move[:1] == 'w' else False
+            player = engine.get_player(isWhite)
+            player.set_next_move(next_move[1:])
             
 
         def sendResponce(responce_code):
@@ -166,9 +166,11 @@ class MyServer(BaseHTTPRequestHandler):
 
         if(request == '/playerdata'):
             data = self.rfile.read(content_lenght).decode('ASCII')[16:] # remove the data tag
-            positions = data.split('+')
-            makeMove()
-            print(positions)
+            move = data.split('+')[0]
+            print(move)
+            print(type(move))
+            makeMove(move)
+            print('next move ' + str(move))
             sendResponce(200)
 
         elif(request == '/start'):
@@ -180,9 +182,15 @@ class MyServer(BaseHTTPRequestHandler):
         elif(request == '/legalmoves'):
             data = self.rfile.read(content_lenght).decode('ASCII')
             piece = data[len('piecePos='):]
+            print(piece)
             global engine
-            legalMoves = player_black.get_legal_moves(engine.board)
-            legalPieceMoves = [move for move in legalMoves if move[:2] == piece]
+            legalMoves = None
+            if piece[:1] == 'b':
+                legalMoves = player_black.get_legal_moves(engine.board)
+            else:
+                legalMoves = player_white.get_legal_moves(engine.board)
+            print(legalMoves)
+            legalPieceMoves = [move for move in legalMoves if move[:2] == piece[1:]]
 
             sendStringContent(None, "{legalmoves:" + str(legalPieceMoves) + "}")
 
