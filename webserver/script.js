@@ -12,8 +12,9 @@ function isWhiteMove(){
 
 function switchTurnMarkers(isWhite){
     let white = document.getElementById('whitePlayerMove')
-    white.style.visibility = ''
+    white.style.visibility = isWhite ? 'visible' : 'hidden'
     let black = document.getElementById('blackPlayerMove')
+    black.style.visibility = isWhite ? 'hidden' : 'visible'
 }
 
 //if white, y coord needs to be reversed
@@ -201,6 +202,9 @@ $(document).ready(function() {
                 
                 whitePlayer = player1[1]
                 blackPlayer = player2[1]
+
+                document.getElementById('start').style.visibility = 'hidden'
+
                 requestNextImg()
             }               
         });
