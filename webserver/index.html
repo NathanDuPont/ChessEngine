@@ -8,11 +8,17 @@
         <script src="script.js" type="text/javascript"></script>
     </head>
     <head>
-        <button id="test">test</button>
-        <button id="start">start</button>
+        <div id="header">
+            <button class="displayStart" id="start">start</button>
+            <button class="displayGame" id="restart">restart</button>
+            <div class="displayGame" id="boardScoreHolder">
+                <p>Current Board Score</p>
+                <p id="boardScore"></p>
+            </div>
+        </div>
+        
         <p id="turn"></p>
         <div id="chessTable"></div>
         <div id="optionMenu"></div>
-        <button id="next">Next</button>
     </head>
 </html>

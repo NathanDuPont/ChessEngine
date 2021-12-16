@@ -166,6 +166,16 @@ function requestStartMenue(){
     });
 }
 
+function getBoardScore(){
+    $.ajax({
+        url: "boardScore",
+        method: "POST",
+        success: function(response) {
+            alert(response)
+        }
+    })
+}
+
 $(document).ready(function() {
     $(document).on('click', '#test', function() {
         $.ajax({

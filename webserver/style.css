@@ -2,12 +2,36 @@ p {
     color: red;
 }
 
+#header {
+    width: 100%;
+    height: 40px;
+    background-color: lightgray;
+}
+
 #chessTable {
     width: 750px;
     height: 750px;
     margin-left: auto;
     margin-right: auto;
     z-index: 5;
+}
+
+#header button {
+    display: inline-block;
+    width: 100px;
+    height: 100%;
+}
+
+#restart {
+    display: none !important;
+}
+
+#boardScoreHolder {
+    display: inline-block;
+    width: 200px;
+    height: 100%;
+    margin-left: calc(50% - 200px);
+    margin-right: auto;
 }
 
 .highlight {
