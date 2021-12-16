@@ -58,10 +58,10 @@ class BaseAgent:
                 hash_board(board, self.depth - 1, not self.is_white)
             ] = local_score
 
-            if self.is_white and local_score > global_score:
+            if self.is_white and local_score >= global_score:
                 global_score = local_score
                 chosen_move = move
-            elif not self.is_white and local_score < global_score:
+            elif not self.is_white and local_score <= global_score:
                 global_score = local_score
                 chosen_move = move
 

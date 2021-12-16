@@ -49,5 +49,7 @@ class Engine:
 
             count += 1
 
+        print(board.outcome().result())
+
         animator = Animator(dir)
         animator.animate(img_queue)
