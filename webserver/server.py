@@ -1,6 +1,6 @@
 # Python 3 server example
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from os import truncate
+from os import altsep, truncate
 import time
 import re
 from os.path import exists
@@ -50,8 +50,10 @@ class MyServer(BaseHTTPRequestHandler):
             if content_type != None: self.send_header("Content-type", content_type)
             self.end_headers()
 
-        def sendContent(content_type, filename):
+        def sendContent(content_type, filename, messageHead=""):
             createHeader(content_type)
+            if(messageHead != ""):
+                self.wfile.write(bytes(messageHead, "utf-8"))
             with open(filename, 'r') as data:
                 self.wfile.write(bytes(data.read(), "utf-8"))
         
@@ -84,19 +86,24 @@ class MyServer(BaseHTTPRequestHandler):
                 print('getting next img')
                 print(img_location)
 
-                engine.next()
-
-                for x in range(5 * 600): # wait a maximum of 5 minutes
-                    time.sleep(0.1)
-                    if exists(img_location + 'move' + img_number + '.svg'):
-                        break
-                    
-                if (img_location + 'move' + img_number + '.svg'):
-                    sendContent(None, img_location + self.path[1:])
+                if not engine.next():
+                    imgMessageHead = "****"
+                    if len([move for move in engine.board.legal_moves]) == 0:
+                        imgMessageHead = "GaOv"
+                    for x in range(5 * 600): # wait a maximum of 5 minutes
+                        time.sleep(0.1)
+                        if exists(img_location + 'move' + img_number + '.svg'):
+                            break
+                        
+                    if (img_location + 'move' + img_number + '.svg'):
+                        sendContent(None, img_location + self.path[1:], messageHead=imgMessageHead)
+                        print('game over')
+                    else:
+                        print('error')
+                        sendContent(400) #error occurred
                 else:
-                    print('error')
-                    sendContent(400) #error occurred
-            
+                    sendContent(None, (img_location + 'move' + str( int(img_number) - 1) + '.svg'), messageHead="GaOv")
+                    print('game over')
                 
         else:
             self.send_response(404)

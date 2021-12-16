@@ -119,7 +119,7 @@ function requestLegalMoves(piece, client, x, y, isWhite){
             piecePos: (player + piece)
         },
         success: function(msg) { //triggers when response message of 200 is sent
-            legalMoves = msg.replaceAll(' ', '').substring(("{legalmoves:[").length, msg.length - 3).split(',')
+            legalMoves = msg.replaceAll(' ', '').substring(("{legalmoves:[").length, msg.length - 2).split(',')
             if (legalMoves[0] === ''){ // no moves could be found
             } else {
                 createHighlight(client, x, y, blueHighlight, false, null) //this is where the piece is
@@ -139,15 +139,19 @@ function requestNextImg(){
         url: 'move' + currentImg + '.svg',
         method: "GET",
         success: function(response) {
-            $('#chessTable').html(response);
+            $.when(
+                $('#chessTable').html(response.substring(4))
+
+            ).done(function(){
+                if (response.substring(0,4) === 'GaOv'){
+                    alert('Game Has Finished')
+                }
+                currentImg++
+    
+                checkNextMove()
+            }); 
         }
     });
-    // wait until the chess table has loaded
-    $('#chessTable').promise().done(function () {
-        currentImg++
-    
-        checkNextMove()
-    })
 }
 
 function sendPlayerMove(move){
@@ -184,19 +188,6 @@ function getBoardScore(){
 }
 
 $(document).ready(function() {
-    $(document).on('click', '#test', function() {
-        $.ajax({
-            url: 'playerdata',
-            type: 'POST',
-            data: {
-                playerDataField: "1 2 1 4"
-            },
-            success: function(msg) { //triggers when response message of 200 is sent
-                requestNextImg()
-            }               
-        });
-    });
-
     $(document).on('click', '#start', function() {
         player1 = $('#player1').val().split(':')
         player2 = $('#player2').val().split(':')
@@ -207,10 +198,9 @@ $(document).ready(function() {
                 players: player1[0] + " " + player2[0]
             },
             success: function(msg) { //triggers when response message of 200 is sent
-
+                
                 whitePlayer = player1[1]
                 blackPlayer = player2[1]
-
                 requestNextImg()
             }               
         });
