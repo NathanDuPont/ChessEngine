@@ -1,11 +1,87 @@
+@media screen and (prefers-color-scheme: light) {
+    p {
+        color: #292929;
+    }
+
+    #header {
+        background-color: lightgray;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    #optionMenu {
+        background-color: gray;
+    }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    p {
+        color: rgb(255, 255, 255);
+    }
+    
+    #header {
+        background-color:#1b1b1b;
+    }
+
+    body {
+        background-color: black;
+    }
+
+    button {
+        background-color: #292929;
+        color: white;
+        border: none;
+    }
+
+    button:hover {
+        background-color: #494949;
+    }
+
+    select {
+        background-color: #292929;
+        color: white;
+        border: none;
+    }
+
+    select:hover {
+        background-color: black;
+    }
+
+    rect {
+        fill: black;
+    }
+
+    rect {
+
+    }
+
+    #optionMenu {
+        background-color: #292929;
+    }
+
+    #blackPlayerMove {
+        border-width: 1em;
+        border-color: white;
+    }
+
+    .square.light {
+        fill: #6d3600;
+    }
+
+    .square.dark {
+        fill: #975e26;
+    }
+}
+
 p {
-    color: red;
+    font-family:'Georgia';
 }
 
 #header {
     width: 100%;
     height: 80px;
-    background-color: lightgray;
     overflow: hidden;
 }
 
@@ -49,7 +125,6 @@ p {
 }
 
 #optionMenu {
-    background-color: gray;
     height: 80px;
     width: 750px;
     margin-right: auto;
@@ -66,4 +141,9 @@ p {
     color: black;
     float: right;
     margin-right: 20px;
+}
+
+.playerMove {
+    font-family: 'Impact';
+    font-size: 1.5em;
 }
